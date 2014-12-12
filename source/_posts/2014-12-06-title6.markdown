@@ -1,0 +1,7 @@
+---
+layout: post
+title: "title6"
+date: 2014-12-06 11:15:53 +0100
+comments: true
+categories: 
+---
