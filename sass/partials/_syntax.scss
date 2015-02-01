@@ -7,7 +7,7 @@
 }
 .highlight .line-numbers, html .gist .gist-file .gist-syntax .highlight .line_numbers {
 	text-align: right;
-	font-size: 13px;
+	font-size: 1.0em;
 	line-height: 1.45em;
 	span { color: $pre-color !important; }
 	padding: .8em !important;
@@ -76,7 +76,7 @@ pre {
 	//@extend .mono;
 	border: 1px solid $pre-border-color;
 	line-height: 1.45em;
-	font-size: 13px;
+	font-size: 1.0em;
 	margin-bottom: 2.1em;
 	padding: .8em 1em;
 	color: $pre-color;
@@ -97,6 +97,7 @@ h3.filename {
 	line-height: 1.45em;
 	background: $pre-bg !important;
 	color: $base1 !important;
+	white-space: pre;
 	span { color: $base1 !important; }
 	span { font-style: normal !important; font-weight: normal !important; }
 
@@ -188,7 +189,8 @@ pre, .highlight, .gist-highlight {
 figure.code {
 	background: none;
 	padding: 0;
-	border: 0;
+	border: solid 1px $pre-border-color;
+	@include border-top-radius($border-radius-base);
 	margin-bottom: 1.5em;
 	pre { margin-bottom: 0; }
 	figcaption {
@@ -209,13 +211,8 @@ figure.code {
 	color: #474747;
 	font-weight: normal;
 	margin-bottom: 0;
-	@include border-top-radius($border-radius-base);
-	font-family: "Helvetica Neue", Arial, "Lucida Grande", "Lucida Sans Unicode", Lucida, sans-serif;
 	background: darken($pre-bg, 5%);
-	border: 1px solid #565656;
-	border-top-color: $pre-border-color;
-	border-left-color: $pre-border-color;
-	border-right-color: $pre-border-color;
+	@include border-top-radius($border-radius-base);
 	border-bottom: 0;
 }
 

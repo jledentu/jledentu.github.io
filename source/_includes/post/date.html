@@ -1,5 +1,85 @@
-{% if page.date %}{% capture time %}{{ page.date_html }}{% endcapture %}{% endif %}
-{% if post.date %}{% capture time %}{{ post.date_html }}{% endcapture %}{% endif %}
+{% if page.date %}
+	{% capture time %}
+	{% assign m = page.date | date: "%-m" %}
+	{{ page.date | date: "%-d" }}
+	{% case m %}
+		{% when '1' %}janvier
+		{% when '2' %}février
+		{% when '3' %}mars
+		{% when '4' %}avril
+		{% when '5' %}mai
+		{% when '6' %}juin
+		{% when '7' %}juillet
+		{% when '8' %}août
+		{% when '9' %}septembre
+		{% when '10' %}octobre
+		{% when '11' %}novembre
+		{% when '12' %}décembre
+	{% endcase %}
+	{{ page.date | date: "%Y" }}
+	{% endcapture %}
+{% endif %}
+{% if post.date %}
+	{% capture time %}
+	{% assign m = post.date | date: "%-m" %}
+	{{ post.date | date: "%-d" }}
+	{% case m %}
+		{% when '1' %}janvier
+		{% when '2' %}février
+		{% when '3' %}mars
+		{% when '4' %}avril
+		{% when '5' %}mai
+		{% when '6' %}juin
+		{% when '7' %}juillet
+		{% when '8' %}août
+		{% when '9' %}septembre
+		{% when '10' %}octobre
+		{% when '11' %}novembre
+		{% when '12' %}décembre
+	{% endcase %}
+	{{ post.date | date: "%Y" }}
+	{% endcapture %}
+{% endif %}
 
-{% if page.updated %}{% capture updated %}{{ page.date_updated_html }}{% endcapture %}{% endif %}
-{% if post.updated %}{% capture updated %}{{ post.date_updated_html }}{% endcapture %}{% endif %}
+{% if page.updated %}
+	{% capture updated %}
+	{% assign m = page.updated | date: "%-m" %}
+	{{ page.updated | date: "%-d" }}
+	{% case m %}
+		{% when '1' %}janvier
+		{% when '2' %}février
+		{% when '3' %}mars
+		{% when '4' %}avril
+		{% when '5' %}mai
+		{% when '6' %}juin
+		{% when '7' %}juillet
+		{% when '8' %}août
+		{% when '9' %}septembre
+		{% when '10' %}octobre
+		{% when '11' %}novembre
+		{% when '12' %}décembre
+	{% endcase %}
+	{{ page.updated | date: "%Y" }}
+	{% endcapture %}
+{% endif %}
+{% if post.updated %}
+	{% capture updated %}
+	{% assign m = post.updated | date: "%-m" %}
+	{{ post.updated | date: "%-d" }}
+	{% case m %}
+		{% when '1' %}janvier
+		{% when '2' %}février
+		{% when '3' %}mars
+		{% when '4' %}avril
+		{% when '5' %}mai
+		{% when '6' %}juin
+		{% when '7' %}juillet
+		{% when '8' %}août
+		{% when '9' %}septembre
+		{% when '10' %}octobre
+		{% when '11' %}novembre
+		{% when '12' %}décembre
+	{% endcase %}
+	{{ post.updated | date: "%Y" }}
+	{% endcapture %}
+{% endif %}

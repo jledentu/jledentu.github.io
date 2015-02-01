@@ -5,9 +5,15 @@ $footer-border: solid 1px lightgray;
 $footer-bg: transparent;
 $footer-color: #777;
 
+.navbar-default {
+	border-bottom: #bdc3c7 solid 5px;
+}
+
 .navbar-default a {
-	font-weight: bold;
 	text-transform: uppercase;
+	transition: color 1s;
+	font-weight: bold;
+	font-size: 0.9em;
 }
 
 .post-date {
@@ -26,6 +32,7 @@ $footer-color: #777;
 	margin-top: 100px;
 	color: $footer-color;
 	text-align: center;
+	font-size: 0.9em;
 
 	#social-buttons {
 		text-align:center;
@@ -61,4 +68,8 @@ $footer-color: #777;
 
 .pagination {
 	display: block;
+}
+
+code {
+	font-size: 1.0em;
 }

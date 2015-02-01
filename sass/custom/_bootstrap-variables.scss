@@ -20,7 +20,7 @@
 // $gray-light:             lighten($gray-base, 46.7%) // #777
 // $gray-lighter:           lighten($gray-base, 93.5%) // #eee
 
-// $brand-primary:         darken(#428bca, 6.5%)
+$brand-primary:         #3498db;
 // $brand-success:         #5cb85c
 // $brand-info:            #5bc0de
 // $brand-warning:         #f0ad4e
@@ -38,7 +38,7 @@
 //* Global textual link color.
 // $link-color:            $brand-primary
 //* Link hover color set via `darken()` function.
-$link-hover-color:      #2980b9;
+$link-hover-color:      #3498db;
 //* Link hover decoration.
 // $link-hover-decoration: underline
 
@@ -46,13 +46,13 @@ $link-hover-color:      #2980b9;
 //
 //## Font, line-height, and color for body text, headings, and more.
 
-// $font-family-sans-serif:  "Helvetica Neue", Helvetica, Arial, sans-serif
-// $font-family-serif:       Georgia, "Times New Roman", Times, serif
+$font-family-sans-serif:     "Open Sans", Helvetica, Arial, sans-serif;
+$font-family-serif:          "Droid Serif", "Times New Roman", Times, serif;
 //* Default monospace fonts for `<code>`, `<kbd>`, and `<pre>`.
 // $font-family-monospace:   Menlo, Monaco, Consolas, "Courier New", monospace
 // $font-family-base:        $font-family-sans-serif
 
-// $font-size-base:          14px
+$font-size-base:             16px;
 // $font-size-large:         ceil(($font-size-base * 1.25)) // ~18px
 // $font-size-small:         ceil(($font-size-base * 0.85)) // ~12px
 
@@ -69,7 +69,7 @@ $link-hover-color:      #2980b9;
 // $line-height-computed:    floor(($font-size-base * $line-height-base)) // ~20px
 
 //* By default, this inherits from the `<body>`.
-// $headings-font-family:    inherit
+$headings-font-family:       $font-family-serif;
 // $headings-font-weight:    500
 // $headings-line-height:    1.1
 // $headings-color:          inherit
@@ -350,13 +350,13 @@ $link-hover-color:      #2980b9;
 // $navbar-padding-vertical:          (($navbar-height - $line-height-computed) / 2)
 // $navbar-collapse-max-height:       340px
 
-$navbar-default-color:                black;
-$navbar-default-bg:                   white;
+$navbar-default-color:                white;
+$navbar-default-bg:                   #2c3e50;
 $navbar-default-border:               transparent;
 
 // Navbar links
-$navbar-default-link-color:                   black;
-$navbar-default-link-hover-color:             #2980b9;
+$navbar-default-link-color:                   white;
+$navbar-default-link-hover-color:             #3498db;
 // $navbar-default-link-hover-bg:             transparent
 // $navbar-default-link-active-color:         #555
 // $navbar-default-link-active-bg:            darken($navbar-default-bg, 6.5%)
@@ -364,8 +364,8 @@ $navbar-default-link-hover-color:             #2980b9;
 // $navbar-default-link-disabled-bg:          transparent
 
 // Navbar brand label
-$navbar-default-brand-color:                  black;
-$navbar-default-brand-hover-color:            #2980b9;
+$navbar-default-brand-color:                  #bdc3c7;
+$navbar-default-brand-hover-color:            #3498db;
 // $navbar-default-brand-hover-bg:            transparent
 
 // Navbar toggle
@@ -821,7 +821,7 @@ $navbar-default-brand-hover-color:            #2980b9;
 //* Blockquote font size
 // $blockquote-font-size:        ($font-size-base * 1.25)
 //* Blockquote border color
-// $blockquote-border-color:     $gray-lighter
+$blockquote-border-color:     #3498db;
 //* Page header border color
 // $page-header-border-color:    $gray-lighter
 //* Width of horizontal description list titles
