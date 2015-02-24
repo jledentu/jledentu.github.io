@@ -18,6 +18,8 @@ $footer-color: #777;
 
 .post-date {
 	color: $post-date-color;
+	text-transform: uppercase;
+	font-size: 0.9em;
 }
 
 .entry-title > a {
