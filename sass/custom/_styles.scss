@@ -17,3 +17,7 @@ a.navbar-brand {
 .blog-index footer {
 	overflow: auto;
 }
+
+.img-bordered {
+	border: 1px $thumbnail-border solid;
+}
