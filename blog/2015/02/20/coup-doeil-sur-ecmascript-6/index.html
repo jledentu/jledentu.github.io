@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+	  <title>Coup d&#39;œil sur ECMAScript 6 | Jérémie Ledentu</title>
+	  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="JavaScript est une implémentation de ECMAScript, le langage de script standardisé par la norme ECMA-262. La dernière édition publiée de cette norme est la 5.1, qui est supportée par tous les navigateu">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Coup d'œil sur ECMAScript 6">
+<meta property="og:url" content="http://www.jeremie-ledentu.com/blog/2015/02/20/coup-doeil-sur-ecmascript-6/index.html">
+<meta property="og:site_name" content="Jérémie Ledentu">
+<meta property="og:description" content="JavaScript est une implémentation de ECMAScript, le langage de script standardisé par la norme ECMA-262. La dernière édition publiée de cette norme est la 5.1, qui est supportée par tous les navigateu">
+<meta property="og:updated_time" content="2016-05-12T20:23:50.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Coup d'œil sur ECMAScript 6">
+<meta name="twitter:description" content="JavaScript est une implémentation de ECMAScript, le langage de script standardisé par la norme ECMA-262. La dernière édition publiée de cette norme est la 5.1, qui est supportée par tous les navigateu">
+<meta name="twitter:creator" content="@jledentu">
+  
+    <link rel="alternate" href="/atom.xml" title="Jérémie Ledentu" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+		<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,700italic,400italic' rel='stylesheet' type='text/css'>
+		<link href='http://fonts.googleapis.com/css?family=Droid+Serif' rel='stylesheet' type='text/css'>
+		<link href='http://fonts.googleapis.com/css?family=Inconsolata:400,700' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="/css/style.css">
+		<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.2/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-58820068-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+</head>
+
+<body>
+    <nav class="navbar navbar-default navbar-static-top" role="navigation">
+	<div class="container">
+		<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+			<span class="sr-only">Toggle navigation</span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+		</button>
+		<a class="navbar-brand" href="/">
+			<div class="hidden-xs">[ <span class="title1">jeremie</span><span class="title2">ledentu</span> ]</div>
+			<div class="visible-xs-inline-block">[<span class="title1">j</span><span class="title2">l</span>]</div>
+		</a>
+		<nav class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+			<ul class="nav navbar-nav navbar-right">
+				
+				<li>
+					<a class="main-nav-link" href="/">Blog</a>
+				</li>
+				
+				<li>
+					<a class="main-nav-link" href="/archives">Archives</a>
+				</li>
+				
+			</ul>
+		</nav>
+	</div>
+</nav>
+
+    <section id="main">
+			<article id="post-coup-doeil-sur-ecmascript-6" class="container article article-type-post" itemscope itemprop="blogPost">
+
+	<header class="page-header">
+		
+    
+  
+    <h1 class="entry-title" itemprop="name">
+      Coup d&#39;œil sur ECMAScript 6
+    </h1>
+  
+
+
+		
+
+    
+      <p class="meta">
+        <span class="post-date">
+	<time datetime="2015-02-20T19:12:37.000Z" itemprop="datePublished">20 février 2015</time>
+</span>
+
+				
+           | <a href="http://www.jeremie-ledentu.com/blog/2015/02/20/coup-doeil-sur-ecmascript-6/#disqus_thread">Commentaires</a>
+        
+      </p>
+    
+  </header>
+	
+	<div class="entry-content"><p>JavaScript est une implémentation de ECMAScript, le langage de script standardisé par la norme ECMA-262. La dernière édition publiée de cette norme est la 5.1, qui est <a href="http://kangax.github.io/compat-table/es5/" target="_blank" rel="external">supportée</a> par tous les navigateurs web modernes. L’édition 6, baptisée <em>Harmony</em>, est en cours de préparation. Elle ambitionne d’améliorer notablement le langage et de le rendre plus simple pour écrire des applications complexes. D’ors et déjà, les moteurs Javascript implémentent déjà certaines fonctionnalités (une table de compatibilité se trouve <a href="http://kangax.github.io/compat-table/es6/" target="_blank" rel="external">ici</a>).</p>
+<p>Découvrons maintenant quelques-unes des nouveautés apportées par ES6 (liste non exhaustive)…</p>
+<a id="more"></a>
+<h2 id="Classes-et-heritage"><a href="#Classes-et-heritage" class="headerlink" title="Classes et héritage"></a>Classes et héritage</h2><p>Les classes ES6 proposent une syntaxe plus simple et plus légère (un “sucre syntaxique”) pour créer des “classes” :</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Polygon</span> </span>&#123;</span><br><span class="line">  <span class="keyword">constructor</span>(height, width) &#123; <span class="comment">// Constructeur</span></span><br><span class="line">    <span class="keyword">this</span>.name = <span class="string">'Polygone'</span>;</span><br><span class="line">    <span class="keyword">this</span>.height = height;</span><br><span class="line">    <span class="keyword">this</span>.width = width;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  sayMyName() &#123; <span class="comment">// Méthode</span></span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'Coucou, je suis un '</span>, <span class="keyword">this</span>.name + <span class="string">'.'</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>On instancie un objet classiquement :</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> Polygon === <span class="string">'function'</span>); <span class="comment">// true</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> p = <span class="keyword">new</span> Polygon(<span class="number">5</span>, <span class="number">5</span>);</span><br><span class="line">p.sayMyName(); <span class="comment">// Coucou, je suis un Polygone.</span></span><br></pre></td></tr></table></figure>
+<p>Pour créer une classe qui hérite d’une autre classe :</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Square</span> <span class="keyword">extends</span> <span class="title">Polygon</span> </span>&#123;</span><br><span class="line">  <span class="keyword">constructor</span>(side) &#123;</span><br><span class="line">    <span class="keyword">super</span>(side, side); <span class="comment">// Appelle la méthode de la classe mère</span></span><br><span class="line">    <span class="keyword">this</span>.name = <span class="string">'Carré'</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  get area() &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.height * <span class="keyword">this</span>.width;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> s = <span class="keyword">new</span> Square(<span class="number">5</span>);</span><br><span class="line">s.sayMyName(); <span class="comment">// Coucou, je suis un Carré.</span></span><br><span class="line"><span class="built_in">console</span>.log(s.area); <span class="comment">// 25</span></span><br></pre></td></tr></table></figure>
+<h2 id="let"><a href="#let" class="headerlink" title="let"></a>let</h2><p>Vous connaissez le mot clé <code>var</code>, qui permet de définir une variable globale, ou locale à une fonction. Le nouveau mot-clé <code>let</code> permet de définir une variable locale à un bloc :</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (<span class="literal">true</span>) &#123;</span><br><span class="line">  <span class="keyword">var</span> x = <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">let</span> y = <span class="number">1</span>;</span><br><span class="line">  <span class="built_in">console</span>.log(x); <span class="comment">// 1</span></span><br><span class="line">  <span class="built_in">console</span>.log(y); <span class="comment">// 1</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(x); <span class="comment">// 1</span></span><br><span class="line"><span class="built_in">console</span>.log(y); <span class="comment">// ReferenceError</span></span><br></pre></td></tr></table></figure>
+<p>Contrairement à <code>var</code>, il n’y a pas de <em>hoisting</em> avec <code>let</code>, c’est-à-dire qu’une variable locale à un bloc doit être déclarée avant son utilisation. Dans le cas contraire, on obtient une <code>ReferenceError</code> :<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  bar = <span class="number">2</span>; <span class="comment">// ReferenceError</span></span><br><span class="line">  <span class="built_in">console</span>.log(bar);</span><br><span class="line">  <span class="keyword">let</span> bar;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo2</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  bar = <span class="number">2</span>;</span><br><span class="line">  <span class="built_in">console</span>.log(bar); <span class="comment">// 2</span></span><br><span class="line">  <span class="keyword">var</span> bar;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>En cas de redéclaration d’une variable déclarée avec <code>let</code>, on obtient une <code>TypeError</code> :<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (x) &#123;</span><br><span class="line">  <span class="keyword">let</span> bar;</span><br><span class="line">  <span class="keyword">let</span> bar; <span class="comment">// TypeError</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="const"><a href="#const" class="headerlink" title="const"></a>const</h2><p><code>const</code> permet de déclarer une variable, globale ou locale à une fonction, dont la valeur ne peut pas être modifiée après sa déclaration/initialisation (la variable est initialisée en même temps qu’elle est déclarée).</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> bar = <span class="number">2</span>;</span><br><span class="line">  bar = <span class="number">3</span>; <span class="comment">// Erreur</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Iterateurs-et-generateurs"><a href="#Iterateurs-et-generateurs" class="headerlink" title="Itérateurs et générateurs"></a>Itérateurs et générateurs</h2><p>ES6 introduit des <strong>itérateurs</strong>, notion qu’on trouve dans d’autres langages de programmation. Un itérateur (<em>iterator</em>) est un objet qui dispose d’une méthode <code>next()</code>, permettant d’exécuter l’itération suivante, qui retourne un objet contenant deux propriétés : <code>value</code> et <code>done</code>  (qui indique si la séquence itérative est terminée).</p>
+<p>Un itérateur peut être construit à l’aide d’un <strong>générateur</strong>, une fonction dont l’exécution peut être mise en pause grâce à une expression <code>yield</code>. Un itérateur construit par un générateur dispose aussi d’une méthode <code>next()</code> qui permet de poursuivre l’exécution de la fonction, et retourne un objet contenant deux propriétés : <code>value</code> (valeur retournée par l’expression <code>yield</code> suivante lors de l’exécution) et <code>done</code> (qui indique si l’exécution de la méthode est terminée).</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span>* <span class="title">generator</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">yield</span> <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">yield</span> <span class="number">3</span>;</span><br><span class="line">  <span class="keyword">yield</span> <span class="number">10</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> gen = generator();</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(gen.next()); <span class="comment">// &#123;value: 0, done: false&#125;</span></span><br><span class="line"><span class="built_in">console</span>.log(gen.next()); <span class="comment">// &#123;value: 3, done: false&#125;</span></span><br><span class="line"><span class="built_in">console</span>.log(gen.next()); <span class="comment">// &#123;value: 10, done: false&#125;</span></span><br><span class="line"><span class="built_in">console</span>.log(gen.next()); <span class="comment">// &#123;value: undefined, done: true&#125;</span></span><br></pre></td></tr></table></figure>
+<p>Il est possible d’itérer sur un itérateur avec une boucle <code>for..of</code>, type de boucle introduit par ES6 :</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i <span class="keyword">of</span> generator()) &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(i);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 0</span></span><br><span class="line"><span class="comment">// 3</span></span><br><span class="line"><span class="comment">// 10</span></span><br></pre></td></tr></table></figure>
+<p>Un objet <strong>itérable</strong> est un objet qui contient une méthode interne qui retourne un itérateur. Une boucle <code>for..of</code> permet d’itérer sur un tel objet :</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> iterable = &#123;</span><br><span class="line">  *[<span class="built_in">Symbol</span>.iterator]() &#123;</span><br><span class="line">    <span class="keyword">yield</span> <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">yield</span> <span class="number">3</span>;</span><br><span class="line">    <span class="keyword">yield</span> <span class="number">10</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> x <span class="keyword">of</span> iterable) &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(x);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 1</span></span><br><span class="line"><span class="comment">// 3</span></span><br><span class="line"><span class="comment">// 10</span></span><br></pre></td></tr></table></figure>
+<h2 id="Promises"><a href="#Promises" class="headerlink" title="Promises"></a>Promises</h2><p>De nombreux développeurs JavaScript utilisent déjà des bibliothèques comme RSVP.js, qui implémentent ces fameuses promesses (<em>promises</em>). Ce sont des objets qui représentent le résultat d’une opération asynchrone, et elles feront bientôt nativement partie du langage.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> <span class="keyword">async</span> = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span>(<span class="params">res, rej</span>) </span>&#123;</span><br><span class="line">    setTimeout(res, <span class="number">1000</span>);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> after = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'C\'est terminé !'</span>);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Après 1 seconde... C'est terminé !</span></span><br><span class="line"><span class="keyword">async</span>().then(after);</span><br></pre></td></tr></table></figure>
+<h2 id="Arrow-functions"><a href="#Arrow-functions" class="headerlink" title="Arrow functions"></a>Arrow functions</h2><p>Les <em>arrow functions</em> sont des expressions de fonctions anonymes définies par une syntaxe plus simple.</p>
+<p>En ECMAScript 5 :</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> square = <span class="function"><span class="keyword">function</span>(<span class="params">x</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> x * x;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(square(<span class="number">5</span>)); <span class="comment">// 25</span></span><br></pre></td></tr></table></figure>
+<p>La même chose avec une <em>arrow function</em> en ES6 :</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> square = x =&gt; x * x;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(square(<span class="number">5</span>)); <span class="comment">// 25</span></span><br></pre></td></tr></table></figure>
+<h2 id="Parametres-par-defaut"><a href="#Parametres-par-defaut" class="headerlink" title="Paramètres par défaut"></a>Paramètres par défaut</h2><p>ES6 permet de spécifier des valeurs par défaut pour les paramètres d’une fonction :</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">logMessage</span>(<span class="params">msg='Message par défaut'</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(msg);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">logMessage();</span><br><span class="line">logMessage(<span class="string">'Un autre message'</span>);</span><br></pre></td></tr></table></figure>
+<h2 id="Rest-parameters"><a href="#Rest-parameters" class="headerlink" title="Rest parameters"></a>Rest parameters</h2><p>Les <em>rest parameters</em> permettent de définir un nombre variable de paramètres dans une fonction. C’est bien sûr déjà possible en itérant sur le contenu de la variable <code>arguments</code> :</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> bar = &#123;</span><br><span class="line">  drinks: []</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">bar.add = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> drinks = [].slice.call(<span class="built_in">arguments</span>);</span><br><span class="line">  drinks.forEach(<span class="function"><span class="keyword">function</span> (<span class="params">drink</span>) </span>&#123;</span><br><span class="line">    bar.drinks.push(drink);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">bar.add(<span class="string">'whisky'</span>);</span><br><span class="line">bar.add(<span class="string">'martini'</span>, <span class="string">'vodka'</span>);</span><br><span class="line">bar.add(<span class="string">'rhum'</span>, <span class="string">'pastis'</span>, <span class="string">'water'</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(bar.drinks); <span class="comment">// whisky,martini,vodka,rhum,pastis,water</span></span><br></pre></td></tr></table></figure>
+<p>Mais la syntaxe de <em>rest parameters</em> permet de l’écrire de façon un peu plus légère :<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> bar = &#123;</span><br><span class="line">  drinks: []</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">bar.add = <span class="function"><span class="keyword">function</span>(<span class="params">...drinks</span>) </span>&#123;</span><br><span class="line">  drinks.forEach(<span class="function"><span class="keyword">function</span> (<span class="params">drink</span>) </span>&#123;</span><br><span class="line">    bar.drinks.push(drink);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">bar.add(<span class="string">'whisky'</span>);</span><br><span class="line">bar.add(<span class="string">'martini'</span>, <span class="string">'vodka'</span>);</span><br><span class="line">bar.add(<span class="string">'rhum'</span>, <span class="string">'pastis'</span>, <span class="string">'water'</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(bar.drinks); <span class="comment">// whisky,martini,vodka,rhum,pastis,water</span></span><br></pre></td></tr></table></figure></p>
+<p>Ici, le paramètre <code>drinks</code> est un tableau.</p>
+<h2 id="Spread"><a href="#Spread" class="headerlink" title="Spread"></a>Spread</h2><p>L’opérateur <em>Spread</em> permet de passer en paramètre d’une fonction un tableau de paramètres :</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">add</span>(<span class="params">a, b</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> a + b;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> nums = [<span class="number">5</span>, <span class="number">4</span>];</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(add(...nums)); <span class="comment">// 9</span></span><br></pre></td></tr></table></figure>
+<h2 id="Template-strings"><a href="#Template-strings" class="headerlink" title="Template strings"></a>Template strings</h2><p>Les <em>template strings</em> apportent une nouvelle syntaxe pour définir et manipuler des chaînes de caractères (notez les back-ticks `) :</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> string = <span class="string">`Coucou`</span>;</span><br></pre></td></tr></table></figure>
+<p>Ces <em>template strings</em> permettent de faire de l’interpolation de chaînes, et d’embarquer des expressions (<em>embedded expressions</em>) :</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> cocktail = &#123;name: <span class="string">'mojito'</span>&#125;;</span><br><span class="line"><span class="keyword">let</span> tpl = <span class="string">`Un <span class="subst">$&#123;cocktail.name&#125;</span>, je vous prie.`</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(tpl); <span class="comment">// Un mojito, je vous prie.</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">`J'en prendrai même <span class="subst">$&#123;1+1&#125;</span>.`</span>); <span class="comment">// J'en prendrai même 2</span></span><br></pre></td></tr></table></figure>
+<p>Ou encore écrire des chaînes de caractères sur plusieurs lignes :</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> string = <span class="string">`Voici</span><br><span class="line">une chaîne sur deux lignes`</span>;</span><br></pre></td></tr></table></figure>
+<h2 id="Nouvelles-structures-de-donnees"><a href="#Nouvelles-structures-de-donnees" class="headerlink" title="Nouvelles structures de données"></a>Nouvelles structures de données</h2><p>La spécification ECMAScript 6 ajoute plusieurs structures de données au langage : <code>Set</code>, <code>WeakSet</code>, <code>Map</code>, <code>WeakMap</code>.</p>
+<h3 id="Set"><a href="#Set" class="headerlink" title="Set"></a>Set</h3><p>Un <code>Set</code> est un ensemble de données sans doublon.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> s = <span class="keyword">new</span> <span class="built_in">Set</span>([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">3</span>, <span class="number">4</span>]);</span><br><span class="line"></span><br><span class="line">s.add(<span class="string">'test'</span>);</span><br><span class="line">s.delete(<span class="number">2</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(s.size); <span class="comment">// 4</span></span><br><span class="line"><span class="built_in">console</span>.log(s.has(<span class="number">1</span>)); <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+<p>Il est possible d’itérer sur un <code>Set</code> avec une boucle <code>for..of</code>, dans l’ordre dans lequel les éléments ont été ajoutés :</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> value <span class="keyword">of</span> s) &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(value);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 1</span></span><br><span class="line"><span class="comment">// 3</span></span><br><span class="line"><span class="comment">// 4</span></span><br><span class="line"><span class="comment">// test</span></span><br></pre></td></tr></table></figure>
+<h3 id="WeakSet"><a href="#WeakSet" class="headerlink" title="WeakSet"></a>WeakSet</h3><p>Un <code>WeakSet</code> est un <code>Set</code> qui contient uniquement des objets, ou plutôt des références faibles sur des objets, c’est-à-dire que ces références n’empêchent pas le nettoyage des objets par le Garbage Collector si aucune autre référence n’est présente.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> obj1 = &#123;name: <span class="string">'obj1'</span>&#125;;</span><br><span class="line"><span class="keyword">let</span> obj2 = &#123;name: <span class="string">'obj2'</span>&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> s = <span class="keyword">new</span> <span class="built_in">WeakSet</span>();</span><br><span class="line"></span><br><span class="line">s.add(obj1);</span><br><span class="line">s.delete(obj2);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(s.has(obj1)); <span class="comment">// true</span></span><br><span class="line"><span class="built_in">console</span>.log(s.has(obj2)); <span class="comment">// false</span></span><br></pre></td></tr></table></figure>
+<h3 id="Map"><a href="#Map" class="headerlink" title="Map"></a>Map</h3><p>Une <code>Map</code> est un tableau associatif (association clés-valeurs).</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> myMap = <span class="keyword">new</span> <span class="built_in">Map</span>();</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> key1 = <span class="string">'cle1'</span>;</span><br><span class="line"><span class="keyword">let</span> key2 = <span class="number">2</span>;</span><br><span class="line"><span class="keyword">let</span> key3 = &#123;&#125;;</span><br><span class="line"></span><br><span class="line">myMap.set(key1, <span class="string">'Value 1'</span>);</span><br><span class="line">myMap.set(key2, <span class="string">'Value 2'</span>);</span><br><span class="line">myMap.set(key3, <span class="string">'Value 3'</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(myMap.size); <span class="comment">// 3</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(myMap.get(key1)); <span class="comment">// Value 1</span></span><br><span class="line"><span class="built_in">console</span>.log(myMap.get(key2)); <span class="comment">// Value 2</span></span><br><span class="line"><span class="built_in">console</span>.log(myMap.get(key3)); <span class="comment">// Value 3</span></span><br></pre></td></tr></table></figure>
+<h3 id="WeakMap"><a href="#WeakMap" class="headerlink" title="WeakMap"></a>WeakMap</h3><p>Une <code>WeakMap</code> est une <code>Map</code> dont les clés sont uniquement des objets, ou plutôt des références faibles sur des objets, c’est-à-dire que ces références n’empêchent pas le nettoyage des objets par le Garbage Collector si aucune autre référence n’est présente.</p>
+<p>Contrairement à une <code>Map</code>, une <code>WeakMap</code> n’est pas énumérable et n’a pas de propriété <code>size</code>.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> obj1 = &#123;name: <span class="string">'myObject'</span>&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> m = <span class="keyword">new</span> <span class="built_in">WeakMap</span>();</span><br><span class="line">m.set(obj1, <span class="string">'value1'</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(m.has(obj1)); <span class="comment">// true</span></span><br><span class="line"><span class="built_in">console</span>.log(m.get(obj1)); <span class="comment">// value1</span></span><br><span class="line"></span><br><span class="line">m.delete(obj1);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(m.has(obj1)); <span class="comment">// false</span></span><br><span class="line"><span class="built_in">console</span>.log(m.get(obj1)); <span class="comment">// undefined</span></span><br></pre></td></tr></table></figure>
+<h2 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h2><p>Comme vous pouvez le voir, ECMAScript 6 apporte un gros lot de nouveautés destiné à faciliter l’écriture du langage, en reprenant des possibilités présentes dans d’autres langages de programmation. Pour savoir si vous pouvez utiliser ces nouveautés, consultez <a href="http://kangax.github.io/compat-table/es6/" target="_blank" rel="external">cette table de compatibilité</a>. En attendant que tous les moteurs Javascript soient compatibles, notez l’existence de la bibliothèque <a href="https://github.com/google/traceur-compiler" target="_blank" rel="external">Traceur</a>, qui permet de transformer du code ES5.1 en code ES6 (attention, toutes les fonctionnalités ES6 ne sont pas compatibles). Enfin, <a href="http://www.es6fiddle.net/" target="_blank" rel="external">ES6 Fiddle</a> permet de tester des bouts de code ES6.</p>
+</div>
+	
+
+  
+	<footer>
+		<p class="sharing">
+  
+	<a href="https://twitter.com/share" class="twitter-share-button" data-url="http://www.jeremie-ledentu.com/blog/2015/02/20/coup-doeil-sur-ecmascript-6/" data-via="jledentu" data-text="Coup d'œil sur ECMAScript 6" data-size="large">Tweeter</a>
+	
+  
+  <span class="g-plusone" data-size="large"></span>
+  
+</p>
+
+    
+<p class="meta">
+	
+		<a class="basic-alignment pull-left" href="/blog/2015/01/18/creer-des-applications-html5-pour-desktop-avec-nw-dot-js/">&larr; Créer des applications HTML5 pour desktop avec NW.js</a>
+	
+	
+		<a class="basic-alignment pull-right" href="/blog/2015/02/24/html5-va-vous-faire-vibrer/">HTML5 va vous faire vibrer, avec l&#39;API Vibration &rarr;</a>
+	
+</p>
+
+
+	</footer>
+  
+
+	
+	<section id="comments">
+	  <div id="disqus_thread">
+	    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+	  </div>
+	</section>
+	
+</article>
+
+		</section>
+    <footer class="footer" role="contentinfo">
+	<div class="container">
+		<div id="social-buttons">
+		
+		<a href="https://twitter.com/jledentu" class="btn-twitter"><i class="fa fa-twitter"></i></a>
+		
+		
+		
+		<a href="https://github.com/jledentu" class="btn-github"><i class="fa fa-github"></i></a>
+		
+		
+		<a href="/atom.xml" class="btn-rss"><i class="fa fa-rss"></i></a>
+		</div>
+
+		<div class="info">
+			Copyright &copy; 2016 - Jérémie Ledentu -
+			<span class="credit">Propulsé par <a href="http://hexo.io/" target="_blank">Hexo</a></span>
+		</div>
+	</div>
+</footer>
+
+		
+<script>
+  var disqus_shortname = 'jledentu';
+  
+  var disqus_url = 'http://www.jeremie-ledentu.com/blog/2015/02/20/coup-doeil-sur-ecmascript-6/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+
+
+<script type="text/javascript">
+  (function() {
+    var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+    script.src = 'https://apis.google.com/js/plusone.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+  })();
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+	  <title>HTML5 va vous faire vibrer, avec l&#39;API Vibration | Jérémie Ledentu</title>
+	  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Le W3C a publié l’API Vibration en Recommandation. Cette API, qui s’adresse particulièrement aux périphériques mobiles (smartphones et tablettes) permet d’émettre un feedback à l’utilisateur en utilis">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HTML5 va vous faire vibrer, avec l'API Vibration">
+<meta property="og:url" content="http://www.jeremie-ledentu.com/blog/2015/02/24/html5-va-vous-faire-vibrer/index.html">
+<meta property="og:site_name" content="Jérémie Ledentu">
+<meta property="og:description" content="Le W3C a publié l’API Vibration en Recommandation. Cette API, qui s’adresse particulièrement aux périphériques mobiles (smartphones et tablettes) permet d’émettre un feedback à l’utilisateur en utilis">
+<meta property="og:updated_time" content="2016-05-12T20:23:50.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="HTML5 va vous faire vibrer, avec l'API Vibration">
+<meta name="twitter:description" content="Le W3C a publié l’API Vibration en Recommandation. Cette API, qui s’adresse particulièrement aux périphériques mobiles (smartphones et tablettes) permet d’émettre un feedback à l’utilisateur en utilis">
+<meta name="twitter:creator" content="@jledentu">
+  
+    <link rel="alternate" href="/atom.xml" title="Jérémie Ledentu" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+		<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,700italic,400italic' rel='stylesheet' type='text/css'>
+		<link href='http://fonts.googleapis.com/css?family=Droid+Serif' rel='stylesheet' type='text/css'>
+		<link href='http://fonts.googleapis.com/css?family=Inconsolata:400,700' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="/css/style.css">
+		<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.2/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-58820068-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+</head>
+
+<body>
+    <nav class="navbar navbar-default navbar-static-top" role="navigation">
+	<div class="container">
+		<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+			<span class="sr-only">Toggle navigation</span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+		</button>
+		<a class="navbar-brand" href="/">
+			<div class="hidden-xs">[ <span class="title1">jeremie</span><span class="title2">ledentu</span> ]</div>
+			<div class="visible-xs-inline-block">[<span class="title1">j</span><span class="title2">l</span>]</div>
+		</a>
+		<nav class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+			<ul class="nav navbar-nav navbar-right">
+				
+				<li>
+					<a class="main-nav-link" href="/">Blog</a>
+				</li>
+				
+				<li>
+					<a class="main-nav-link" href="/archives">Archives</a>
+				</li>
+				
+			</ul>
+		</nav>
+	</div>
+</nav>
+
+    <section id="main">
+			<article id="post-html5-va-vous-faire-vibrer" class="container article article-type-post" itemscope itemprop="blogPost">
+
+	<header class="page-header">
+		
+    
+  
+    <h1 class="entry-title" itemprop="name">
+      HTML5 va vous faire vibrer, avec l&#39;API Vibration
+    </h1>
+  
+
+
+		
+
+    
+      <p class="meta">
+        <span class="post-date">
+	<time datetime="2015-02-24T22:48:52.000Z" itemprop="datePublished">24 février 2015</time>
+</span>
+
+				
+           | <a href="http://www.jeremie-ledentu.com/blog/2015/02/24/html5-va-vous-faire-vibrer/#disqus_thread">Commentaires</a>
+        
+      </p>
+    
+  </header>
+	
+	<div class="entry-content"><p>Le W3C a publié l’<strong>API Vibration</strong> en <a href="http://www.w3.org/TR/vibration/" target="_blank" rel="external">Recommandation</a>. Cette API, qui s’adresse particulièrement aux périphériques mobiles (smartphones et tablettes) permet d’émettre un <em>feedback</em> à l’utilisateur en utilisant le vibreur du périphérique. Imaginez une vibration émise lorsque l’utilisateur clique sur un bouton. Ou dans un jeu HTML5, en se faisant toucher par un ennemi !</p>
+<p>Son utilisation est très simple. L’objet <code>window.navigator</code> dispose d’une méthode <code>vibrate(pattern)</code>, avec un paramètre <em>pattern</em> qui peut être :</p>
+<ul>
+<li>un nombre désignant la durée de la vibration (en millisecondes) ;</li>
+<li>un array contenant alternativement des vibrations et des pauses (en millisecondes).</li>
+</ul>
+<a id="more"></a>
+<p>Par exemple, pour faire vibrer l’appareil pendant une seconde :<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">navigator.vibrate(<span class="number">1000</span>);</span><br></pre></td></tr></table></figure></p>
+<p>Qu’on peut écrire aussi :<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">navigator.vibrate([<span class="number">1000</span>]);</span><br></pre></td></tr></table></figure></p>
+<p>Autre exemple, pour faire vibrer l’appareil pendant une seconde, puis patienter pendant une seconde, puis refaire vibrer pendant une demi-seconde :<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">navigator.vibrate([<span class="number">1000</span>, <span class="number">1000</span>, <span class="number">500</span>]);</span><br></pre></td></tr></table></figure></p>
+<p>Notez qu’un appel à <code>vibrate</code> remplace le pattern de vibration précédent. Pour annuler une vibration en cours :<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">navigator.vibrate(<span class="number">0</span>);</span><br></pre></td></tr></table></figure></p>
+<p>Cette API est désormais un standard, et est actuellement disponible dans Firefox, Chrome, Opera et Android Browser. N’hésitez donc pas à l’utiliser pour enrichir l’interactivité de vos applications HTML5.</p>
+</div>
+	
+
+  
+	<footer>
+		<p class="sharing">
+  
+	<a href="https://twitter.com/share" class="twitter-share-button" data-url="http://www.jeremie-ledentu.com/blog/2015/02/24/html5-va-vous-faire-vibrer/" data-via="jledentu" data-text="HTML5 va vous faire vibrer, avec l'API Vibration" data-size="large">Tweeter</a>
+	
+  
+  <span class="g-plusone" data-size="large"></span>
+  
+</p>
+
+    
+<p class="meta">
+	
+		<a class="basic-alignment pull-left" href="/blog/2015/02/20/coup-doeil-sur-ecmascript-6/">&larr; Coup d&#39;œil sur ECMAScript 6</a>
+	
+	
+		<a class="basic-alignment pull-right" href="/blog/2015/04/01/a-la-decouverte-des-web-components/">À la découverte des Web Components &rarr;</a>
+	
+</p>
+
+
+	</footer>
+  
+
+	
+	<section id="comments">
+	  <div id="disqus_thread">
+	    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+	  </div>
+	</section>
+	
+</article>
+
+		</section>
+    <footer class="footer" role="contentinfo">
+	<div class="container">
+		<div id="social-buttons">
+		
+		<a href="https://twitter.com/jledentu" class="btn-twitter"><i class="fa fa-twitter"></i></a>
+		
+		
+		
+		<a href="https://github.com/jledentu" class="btn-github"><i class="fa fa-github"></i></a>
+		
+		
+		<a href="/atom.xml" class="btn-rss"><i class="fa fa-rss"></i></a>
+		</div>
+
+		<div class="info">
+			Copyright &copy; 2016 - Jérémie Ledentu -
+			<span class="credit">Propulsé par <a href="http://hexo.io/" target="_blank">Hexo</a></span>
+		</div>
+	</div>
+</footer>
+
+		
+<script>
+  var disqus_shortname = 'jledentu';
+  
+  var disqus_url = 'http://www.jeremie-ledentu.com/blog/2015/02/24/html5-va-vous-faire-vibrer/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+
+
+<script type="text/javascript">
+  (function() {
+    var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+    script.src = 'https://apis.google.com/js/plusone.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+  })();
+</script>
+
+
+</body>
+</html>

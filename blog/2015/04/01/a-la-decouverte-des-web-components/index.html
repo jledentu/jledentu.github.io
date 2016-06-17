@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+	  <title>À la découverte des Web Components | Jérémie Ledentu</title>
+	  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Vous avez peut-être déjà entendu parler des Web Components, qui font le buzz parmi les développeurs web, dont certains estiment qu’ils vont bouleverser la façon de développer des applications web. L’">
+<meta property="og:type" content="article">
+<meta property="og:title" content="À la découverte des Web Components">
+<meta property="og:url" content="http://www.jeremie-ledentu.com/blog/2015/04/01/a-la-decouverte-des-web-components/index.html">
+<meta property="og:site_name" content="Jérémie Ledentu">
+<meta property="og:description" content="Vous avez peut-être déjà entendu parler des Web Components, qui font le buzz parmi les développeurs web, dont certains estiment qu’ils vont bouleverser la façon de développer des applications web. L’">
+<meta property="og:image" content="http://www.jeremie-ledentu.com/images/webcomponents-logo.png">
+<meta property="og:image" content="http://www.jeremie-ledentu.com/images/shadowdom1.png">
+<meta property="og:image" content="http://www.jeremie-ledentu.com/images/shadowdom2.png">
+<meta property="og:image" content="http://www.jeremie-ledentu.com/images/webcomponents-progress-bar.png">
+<meta property="og:updated_time" content="2016-05-31T20:46:01.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="À la découverte des Web Components">
+<meta name="twitter:description" content="Vous avez peut-être déjà entendu parler des Web Components, qui font le buzz parmi les développeurs web, dont certains estiment qu’ils vont bouleverser la façon de développer des applications web. L’">
+<meta name="twitter:image" content="http://www.jeremie-ledentu.com/images/webcomponents-logo.png">
+<meta name="twitter:creator" content="@jledentu">
+  
+    <link rel="alternate" href="/atom.xml" title="Jérémie Ledentu" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+		<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,700italic,400italic' rel='stylesheet' type='text/css'>
+		<link href='http://fonts.googleapis.com/css?family=Droid+Serif' rel='stylesheet' type='text/css'>
+		<link href='http://fonts.googleapis.com/css?family=Inconsolata:400,700' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="/css/style.css">
+		<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.2/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-58820068-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+</head>
+
+<body>
+    <nav class="navbar navbar-default navbar-static-top" role="navigation">
+	<div class="container">
+		<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+			<span class="sr-only">Toggle navigation</span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+		</button>
+		<a class="navbar-brand" href="/">
+			<div class="hidden-xs">[ <span class="title1">jeremie</span><span class="title2">ledentu</span> ]</div>
+			<div class="visible-xs-inline-block">[<span class="title1">j</span><span class="title2">l</span>]</div>
+		</a>
+		<nav class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+			<ul class="nav navbar-nav navbar-right">
+				
+				<li>
+					<a class="main-nav-link" href="/">Blog</a>
+				</li>
+				
+				<li>
+					<a class="main-nav-link" href="/archives">Archives</a>
+				</li>
+				
+			</ul>
+		</nav>
+	</div>
+</nav>
+
+    <section id="main">
+			<article id="post-a-la-decouverte-des-web-components" class="container article article-type-post" itemscope itemprop="blogPost">
+
+	<header class="page-header">
+		
+    
+  
+    <h1 class="entry-title" itemprop="name">
+      À la découverte des Web Components
+    </h1>
+  
+
+
+		
+
+    
+      <p class="meta">
+        <span class="post-date">
+	<time datetime="2015-04-01T10:26:59.000Z" itemprop="datePublished">1 avril 2015</time>
+</span>
+
+				
+           | <a href="http://www.jeremie-ledentu.com/blog/2015/04/01/a-la-decouverte-des-web-components/#disqus_thread">Commentaires</a>
+        
+      </p>
+    
+  </header>
+	
+	<div class="entry-content"><img src="/images/webcomponents-logo.png" class="pull-right img-responsive">
+<p>Vous avez peut-être déjà entendu parler des <em>Web Components</em>, qui font le buzz parmi les développeurs web, dont certains estiment qu’ils vont bouleverser la façon de développer des applications web. L’idée est de permettre aux développeurs d’applications web d’enrichir le HTML avec des éléments personnalisés, programmables, réutilisables, en s’appuyant sur des technologies standardisées.</p>
+<p>Imaginons par exemple qu’on veuille afficher une barre de progression. Avec un web component, ça donnerait ça :</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">progress-bar</span> <span class="attr">value</span>=<span class="string">"10"</span>&gt;</span><span class="tag">&lt;/<span class="name">progress-bar</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>À la clé, on a donc un code HTML qui traduit bien mieux sa sémantique, et l’ajout de widgets graphiques complexes se fait plus simplement que par l’utilisation de bibliothèques ou frameworks JavaScript. Le HTML redevient un langage déclaratif accessible à tous et pas seulement aux développeurs – ce que le HTML était, à l’origine.</p>
+<a id="more"></a>
+<h2 id="Les-technologies-a-l’oeuvre"><a href="#Les-technologies-a-l’oeuvre" class="headerlink" title="Les technologies à l’œuvre"></a>Les technologies à l’œuvre</h2><p>Les web components s’appuient sur quatre technologies en voie de standardisation par le W3C :</p>
+<ul>
+<li>Les Custom Elements ;</li>
+<li>Les Imports HTML ;</li>
+<li>Les Templates ;</li>
+<li>Le Shadow DOM.</li>
+</ul>
+<h3 id="Custom-Elements"><a href="#Custom-Elements" class="headerlink" title="Custom Elements"></a>Custom Elements</h3><p>La spécification <a href="http://w3c.github.io/webcomponents/spec/custom/" target="_blank" rel="external">Custom Elements</a> apporte la possibilité de définir de nouveaux éléments HTML/DOM, en utilisant la méthode <code>document.registerElement</code> :</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">document</span>.registerElement(<span class="string">'progress-bar'</span>);</span><br></pre></td></tr></table></figure>
+<p>Note : vous pouvez donner le nom que vous voulez à un custom element, tant qu’il contient un “<code>-</code>” pour le distinguer des balises de base, et qu’il ne fait pas partie des noms réservés.</p>
+<p>La méthode <code>registerElement</code> prend comme deuxième paramètre (optionnel) un objet décrivant le prototype de l’élément, qui va contenir des propriétés, des fonctions, et l’implémentation des <em>callbacks</em> suivants :</p>
+<ul>
+<li><code>createdCallback</code>, appelé après que l’élément ait été créé et sa définition enregistrée ;</li>
+<li><code>attachedCallback</code>, appelé après insertion de l’élément dans le DOM ;</li>
+<li><code>detachedCallback</code>, appelé après que l’élément ait été retiré du DOM ;</li>
+<li><code>attributeChangedCallback</code>, appelé lors du changement d’un attribut.</li>
+</ul>
+<p>Par exemple :</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">document</span>.registerElement(<span class="string">'progress-bar'</span>, &#123;</span><br><span class="line"></span><br><span class="line">    prototype: <span class="built_in">Object</span>.create(HTMLElement.prototype, &#123;</span><br><span class="line">        createdCallback: &#123;</span><br><span class="line">            value: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">                <span class="keyword">this</span>.innerHTML = <span class="string">'&lt;b&gt;'</span> + <span class="keyword">this</span>.getAttribute(<span class="string">'value'</span>) + <span class="string">' %&lt;/b&gt;'</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        attributeChangedCallback: &#123;</span><br><span class="line">            value: <span class="function"><span class="keyword">function</span>(<span class="params">attrName, oldValue, newValue</span>) </span>&#123;</span><br><span class="line">                <span class="keyword">switch</span> (attrName) &#123;</span><br><span class="line">                    <span class="keyword">case</span> <span class="string">'value'</span>:</span><br><span class="line">                    <span class="keyword">this</span>.innerHTML = <span class="string">'&lt;b&gt;'</span> + newValue + <span class="string">' %&lt;/b&gt;'</span>;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;,</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>Ce nouvel élément peut être instancié de façon impérative, ou déclaré dans le code HTML de la façon suivante :</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">progress-bar</span> <span class="attr">value</span>=<span class="string">"10"</span>&gt;</span><span class="tag">&lt;/<span class="name">progress-bar</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>Et ça donne ça :</p>
+<p><strong>10 %</strong></p>
+<h2 id="De-l’encapsulation-avec-le-Shadow-DOM"><a href="#De-l’encapsulation-avec-le-Shadow-DOM" class="headerlink" title="De l’encapsulation avec le Shadow DOM"></a>De l’encapsulation avec le Shadow DOM</h2><p>Le <a href="http://www.w3.org/TR/shadow-dom/" target="_blank" rel="external">Shadow DOM</a> est une structure DOM encapsulée dans un élément appelé shadow root. Ce shadow DOM va permettre de masquer la structure interne d’un web component. Ce concept est déjà utilisé pour certains éléments natifs, comme l’élément video par exemple. En inspectant un élément video avec les outils de développement de Chrome, on voit ceci :</p>
+<img src="/images/shadowdom1.png" class="center-block img-responsive">
+<p>Mais en activant l’affichage du Shadow DOM (une option dans les outils de Chrome), on voit ceci :</p>
+<img src="/images/shadowdom2.png" class="center-block img-responsive">
+<p>La méthode <code>element.createShadowRoot</code> permet d’ajouter un nœud <em>shadow root</em> à un élement du DOM. En reprenant notre exemple de custom element, on peut utiliser cette méthode pour mettre sa structure interne dans du shadow DOM :</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">document</span>.registerElement(<span class="string">'progress-bar'</span>, &#123;</span><br><span class="line"></span><br><span class="line">    prototype: <span class="built_in">Object</span>.create(HTMLElement.prototype, &#123;</span><br><span class="line">        createdCallback: &#123;</span><br><span class="line">            value: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">                <span class="keyword">var</span> sr = <span class="keyword">this</span>.createShadowRoot();</span><br><span class="line">                sr.innerHTML = <span class="string">'&lt;b&gt;'</span> + <span class="keyword">this</span>.getAttribute(<span class="string">'value'</span>) + <span class="string">' %&lt;/b&gt;'</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        attributeChangedCallback: &#123;</span><br><span class="line">            value: <span class="function"><span class="keyword">function</span>(<span class="params">attrName, oldValue, newValue</span>) </span>&#123;</span><br><span class="line">                <span class="keyword">switch</span> (attrName) &#123;</span><br><span class="line">                    <span class="keyword">case</span> <span class="string">'value'</span>:</span><br><span class="line">                    <span class="keyword">var</span> sr = <span class="keyword">this</span>.shadowRoot;</span><br><span class="line">                    sr.innerHTML = <span class="string">'&lt;b&gt;'</span> + newValue + <span class="string">' %&lt;/b&gt;'</span>;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;,</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>Les éléments présents dans du Shadow DOM ne sont pas retournés par des méthodes comme <code>getElementsByTagName</code>, <code>getElementById</code>, ou la propriété <code>children</code>, etc.</p>
+<p>Par exemple, sur notre élément précédent :</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="built_in">document</span>.getElementsByTagName(<span class="string">'b'</span>).length); <span class="comment">// 0</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">document</span>.getElementsByTagName(<span class="string">'progress-bar'</span>)[<span class="number">0</span>].children.length); <span class="comment">// 0</span></span><br></pre></td></tr></table></figure>
+<p>Par contre, si on accède à la propriété <code>shadowRoot</code> de l’élément, là on peut récupérer le contenu :</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="built_in">document</span>.getElementsByTagName(<span class="string">'progress-bar'</span>)[<span class="number">0</span>].shadowRoot.children.length); <span class="comment">// 1</span></span><br></pre></td></tr></table></figure>
+<p>Comme vous le voyez, le Shadow DOM sert bien son rôle d’encapsulation. L’intérêt ? Éviter des conflits entre composants, ou entre une bibliothèque et un composant.</p>
+<p>La spécification Shadow DOM introduit aussi de nouveaux sélecteurs CSS :</p>
+<ul>
+<li><code>:host</code>, qui permet de sélectionner l’élément host (l’élément qui contient le shadow root) ;</li>
+<li><code>::shadow</code>, pseudo-élément qui permet de sélectionner un élément dans le Shadow DOM d’un élément ;</li>
+<li><code>/deep/</code>, sélecteur qui permet de sélectionner des éléments, qu’ils soient dans le Shadow DOM ou non.</li>
+</ul>
+<h2 id="Templates"><a href="#Templates" class="headerlink" title="Templates"></a>Templates</h2><p>L’API <a href="http://www.w3.org/TR/html5/scripting-1.html#the-template-element" target="_blank" rel="external">Template</a> HTML5 permet de simplifier l’écriture de la structure HTML interne d’un composant. Un template est un élément “parsé” au chargement de la page, mais qui n’est pas affiché, et peut être cloné plus tard pour être inséré dans le DOM.</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">template</span> <span class="attr">id</span>=<span class="string">"pbTemplate"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="undefined"></span><br><span class="line">        :host &#123; display: block; height: 10px; border: solid 1px #ddd &#125;</span><br><span class="line">        .progress &#123; height: 10px; background-color: orange; &#125;</span><br><span class="line">    </span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"progress"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span><br><span class="line"><span class="built_in">document</span>.registerElement(<span class="string">'progress-bar'</span>, &#123;</span><br><span class="line"></span><br><span class="line">    prototype: <span class="built_in">Object</span>.create(HTMLElement.prototype, &#123;</span><br><span class="line">        createdCallback: &#123;</span><br><span class="line">            value: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">                <span class="keyword">var</span> t = <span class="built_in">document</span>.getElementById(<span class="string">'pbTemplate'</span>);</span><br><span class="line">                <span class="keyword">var</span> clone = t.content.cloneNode(<span class="literal">true</span>);</span><br><span class="line">                <span class="keyword">this</span>.createShadowRoot().appendChild(clone);</span><br><span class="line"></span><br><span class="line">                <span class="keyword">this</span>.shadowRoot.querySelector(<span class="string">'.progress'</span>).style.width = <span class="keyword">this</span>.getAttribute(<span class="string">'value'</span>) + <span class="string">'%'</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        attributeChangedCallback: &#123;</span><br><span class="line">            value: <span class="function"><span class="keyword">function</span>(<span class="params">attrName, oldValue, newValue</span>) </span>&#123;</span><br><span class="line">                <span class="keyword">switch</span> (attrName) &#123;</span><br><span class="line">                    <span class="keyword">case</span> <span class="string">'value'</span>:</span><br><span class="line">                    <span class="keyword">this</span>.shadowRoot.querySelector(<span class="string">'.progress'</span>).style.width = newValue + <span class="string">'%'</span>;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;,</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;);</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>À ce stade, voici à quoi ressemble notre custom element :</p>
+<img src="/images/webcomponents-progress-bar.png" class="center-block img-responsive">
+<p>Vous pouvez voir ce que ça donne <a href="http://jsfiddle.net/s2drg647/3/" target="_blank" rel="external">ici</a>, en utilisant le navigateur Chrome.</p>
+<h2 id="Reutilisation-facile-avec-les-Imports-HTML"><a href="#Reutilisation-facile-avec-les-Imports-HTML" class="headerlink" title="Réutilisation facile avec les Imports HTML"></a>Réutilisation facile avec les Imports HTML</h2><p>Nous avons passé en revue les technologies qui permettent de créer un web component. L’API HTML Imports permet de rendre les web components facilement réutilisables. Plutôt que d’inclure dans un fichier HTML les fichiers JavaScript, les feuilles de styles CSS, les images, etc. nécessaires à votre composant, que diriez-vous d’inclure un seul fichier HTML :</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"import"</span> <span class="attr">href</span>=<span class="string">"component.html"</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>Avec les imports HTML, c’est possible. Le fichier component.html contiendrait par exemple :</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">href</span>=<span class="string">"css/style.css"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"js/script.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- etc. --&gt;</span></span><br></pre></td></tr></table></figure>
+<p>Comme vous le voyez, réutiliser des composants existants, qu’ils aient été créés par vous-même, ou récupérés sur le web (par exemple sur <a href="http://customelements.io/" target="_blank" rel="external">customelements.io</a>) est très simple.</p>
+<h2 id="Des-polyfills-pour-utiliser-les-web-components-des-maintenant"><a href="#Des-polyfills-pour-utiliser-les-web-components-des-maintenant" class="headerlink" title="Des polyfills pour utiliser les web components dès maintenant"></a>Des polyfills pour utiliser les web components dès maintenant</h2><p>Problème : à l’heure actuelle, seuls les navigateurs Chrome et Opera <a href="http://caniuse.com/#search=components" target="_blank" rel="external">supportent</a> par défaut les technologies évoquées ci-dessus. Mais rassurez-vous, un ensemble de <em>polyfills</em>, appelé <a href="https://github.com/webcomponents/webcomponentsjs" target="_blank" rel="external"><code>webcomponents.js</code></a>, permet à tous les navigateurs actuels (IE10+, Firefox, Chrome, Safari 7+, Chrome Android, Safari Mobile) de prendre en charge les technologies de web components. Le support de navigateurs plus anciens est possible à condition d’ajouter d’autres <em>polyfills</em>.</p>
+<p><code>webcomponents.js</code> peut être téléchargé manuellement à partir de <a href="https://github.com/WebComponents/webcomponentsjs" target="_blank" rel="external">Github</a>, ou installé dans votre projet grâce à <a href="http://bower.io/" target="_blank" rel="external">Bower</a> :</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bower install --save webcomponentsjs</span><br></pre></td></tr></table></figure>
+<p>Ou encore, si vous utilisez <a href="https://www.npmjs.com/" target="_blank" rel="external">npm</a> :</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install --save webcomponents.js</span><br></pre></td></tr></table></figure>
+<p>Puis, il suffit d’insérer <code>webcomponents.js</code> dans votre document HTML :</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"bower_components/webcomponentsjs/webcomponents.min.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>Note : pour maximiser la compatibilité des <em>polyfills</em> avec les autres bibliothèques JavaScript, il est préférable d’inclure <code>webcomponents.js</code> avant les autres scripts de la balise head du document.</p>
+<h2 id="Utiliser-un-web-component"><a href="#Utiliser-un-web-component" class="headerlink" title="Utiliser un web component"></a>Utiliser un web component</h2><p>Une fois les <em>polyfills</em> inclus, vous pouvez utiliser les APIs Custom Elements, Shadow DOM, HTML Imports… et donc utiliser des web components ! Par exemple, récupérez un composant (tel que <a href="https://github.com/GoogleWebComponents/google-map" target="_blank" rel="external">google-maps</a>), puis incluez-le de la façon suivante :</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"import"</span> <span class="attr">href</span>=<span class="string">"google-map/google-map.html"</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>Et insérez-le dans votre page :</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">google-map</span> <span class="attr">latitude</span>=<span class="string">"37.77493"</span> <span class="attr">longitude</span>=<span class="string">"-122.41942"</span>&gt;</span><span class="tag">&lt;/<span class="name">google-map</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="Bibliotheques"><a href="#Bibliotheques" class="headerlink" title="Bibliothèques"></a>Bibliothèques</h2><p>Il est tout à fait possible d’écrire un composant web en JavaScript <em>Vanilla</em> (sans bibliothèque tierce) en utilisant simplement les technologies exposées précédemment. Néanmoins, plusieurs bibliothèques ont été développées afin de faciliter l’écriture de composants.</p>
+<h3 id="Polymer"><a href="#Polymer" class="headerlink" title="Polymer"></a>Polymer</h3><p><a href="http://www.polymer-project.org/" target="_blank" rel="external"><strong>Polymer</strong></a> est un projet initié par Google, qui permet de créer des web components en proposant une syntaxe allégée. Polymer ajoute aussi des mécanismes tels que les <em>Data Bindings</em> ou l’unification des touch/mouse events (<em>gestures</em>).<br>Polymer propose également deux collections de composants :</p>
+<ul>
+<li><strong>Core elements</strong>, des composants de base, graphiques ou non, pour les interactions, la mise en page, la création de squelettes d’applications web ;</li>
+<li><strong>Paper elements</strong>, des éléments graphiques qui implémentent la charte Material Design de Google.</li>
+</ul>
+<h3 id="X-Tag"><a href="#X-Tag" class="headerlink" title="X-Tag"></a>X-Tag</h3><p><a href="http://x-tags.org/" target="_blank" rel="external"><strong>X-Tag</strong></a> est une bibliothèque développée par Mozilla. Elle est plus légère que Polymer car elle n’intègre que la gestion des Custom Elements. La création de Shadow DOM ou la gestion de templates HTML sont optionnelles et doivent être ajoutées manuellement par le développeur.</p>
+<p>Mozilla a également développé Brick, une collection d’éléments dont l’implémentation s’appuie sur X-Tag, utilisée notamment dans Firefox OS.</p>
+<h3 id="Bosonic"><a href="#Bosonic" class="headerlink" title="Bosonic"></a>Bosonic</h3><p><a href="http://bosonic.github.io/" target="_blank" rel="external"><strong>Bosonic</strong></a> est un autre projet qui propose également un sucre syntaxique pour faciliter l’écriture de web components, en s’appuyant sur les custom elements, le Shadow DOM et les templates. C’est un compromis entre la richesse de Polymer et la légèreté de X-Tags. Bosonic supporte aussi des navigateurs moins récents comme IE 9.</p>
+<h2 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h2><p>Si pour l’heure, le fait qu’ils ne soient pas supportés nativement dans tous les navigateurs (mais avec des polyfills) peut poser des problèmes de performances, les web components deviendront bientôt très répandus dans le développement web.</p>
+<p>Dans le prochain article, j’expliquerai comment créer une web app avec Polymer.</p>
+</div>
+	
+
+  
+	<footer>
+		<p class="sharing">
+  
+	<a href="https://twitter.com/share" class="twitter-share-button" data-url="http://www.jeremie-ledentu.com/blog/2015/04/01/a-la-decouverte-des-web-components/" data-via="jledentu" data-text="À la découverte des Web Components" data-size="large">Tweeter</a>
+	
+  
+  <span class="g-plusone" data-size="large"></span>
+  
+</p>
+
+    
+<p class="meta">
+	
+		<a class="basic-alignment pull-left" href="/blog/2015/02/24/html5-va-vous-faire-vibrer/">&larr; HTML5 va vous faire vibrer, avec l&#39;API Vibration</a>
+	
+	
+		<a class="basic-alignment pull-right" href="/blog/2015/05/06/creer-une-application-web-avec-polymer/">Créer une application web avec Polymer &rarr;</a>
+	
+</p>
+
+
+	</footer>
+  
+
+	
+	<section id="comments">
+	  <div id="disqus_thread">
+	    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+	  </div>
+	</section>
+	
+</article>
+
+		</section>
+    <footer class="footer" role="contentinfo">
+	<div class="container">
+		<div id="social-buttons">
+		
+		<a href="https://twitter.com/jledentu" class="btn-twitter"><i class="fa fa-twitter"></i></a>
+		
+		
+		
+		<a href="https://github.com/jledentu" class="btn-github"><i class="fa fa-github"></i></a>
+		
+		
+		<a href="/atom.xml" class="btn-rss"><i class="fa fa-rss"></i></a>
+		</div>
+
+		<div class="info">
+			Copyright &copy; 2016 - Jérémie Ledentu -
+			<span class="credit">Propulsé par <a href="http://hexo.io/" target="_blank">Hexo</a></span>
+		</div>
+	</div>
+</footer>
+
+		
+<script>
+  var disqus_shortname = 'jledentu';
+  
+  var disqus_url = 'http://www.jeremie-ledentu.com/blog/2015/04/01/a-la-decouverte-des-web-components/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+
+
+<script type="text/javascript">
+  (function() {
+    var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+    script.src = 'https://apis.google.com/js/plusone.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+  })();
+</script>
+
+
+</body>
+</html>

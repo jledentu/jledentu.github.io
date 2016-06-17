@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+	  <title>Créer des applications HTML5 pour desktop avec NW.js | Jérémie Ledentu</title>
+	  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Vous êtes développeur web et vous aimeriez créer facilement une application native pour Windows, Linux ou MacOS X ? C’est possible ! Plusieurs projets ont vu le jour pour permettre de développer des a">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Créer des applications HTML5 pour desktop avec NW.js">
+<meta property="og:url" content="http://www.jeremie-ledentu.com/blog/2015/01/18/creer-des-applications-html5-pour-desktop-avec-nw-dot-js/index.html">
+<meta property="og:site_name" content="Jérémie Ledentu">
+<meta property="og:description" content="Vous êtes développeur web et vous aimeriez créer facilement une application native pour Windows, Linux ou MacOS X ? C’est possible ! Plusieurs projets ont vu le jour pour permettre de développer des a">
+<meta property="og:image" content="http://www.jeremie-ledentu.com/images/nw-helloworld.png">
+<meta property="og:image" content="http://www.jeremie-ledentu.com/images/nw-helloworld2.png">
+<meta property="og:updated_time" content="2016-05-12T20:23:50.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Créer des applications HTML5 pour desktop avec NW.js">
+<meta name="twitter:description" content="Vous êtes développeur web et vous aimeriez créer facilement une application native pour Windows, Linux ou MacOS X ? C’est possible ! Plusieurs projets ont vu le jour pour permettre de développer des a">
+<meta name="twitter:image" content="http://www.jeremie-ledentu.com/images/nw-helloworld.png">
+<meta name="twitter:creator" content="@jledentu">
+  
+    <link rel="alternate" href="/atom.xml" title="Jérémie Ledentu" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+		<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,700italic,400italic' rel='stylesheet' type='text/css'>
+		<link href='http://fonts.googleapis.com/css?family=Droid+Serif' rel='stylesheet' type='text/css'>
+		<link href='http://fonts.googleapis.com/css?family=Inconsolata:400,700' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="/css/style.css">
+		<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.2/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-58820068-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+</head>
+
+<body>
+    <nav class="navbar navbar-default navbar-static-top" role="navigation">
+	<div class="container">
+		<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+			<span class="sr-only">Toggle navigation</span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+		</button>
+		<a class="navbar-brand" href="/">
+			<div class="hidden-xs">[ <span class="title1">jeremie</span><span class="title2">ledentu</span> ]</div>
+			<div class="visible-xs-inline-block">[<span class="title1">j</span><span class="title2">l</span>]</div>
+		</a>
+		<nav class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+			<ul class="nav navbar-nav navbar-right">
+				
+				<li>
+					<a class="main-nav-link" href="/">Blog</a>
+				</li>
+				
+				<li>
+					<a class="main-nav-link" href="/archives">Archives</a>
+				</li>
+				
+			</ul>
+		</nav>
+	</div>
+</nav>
+
+    <section id="main">
+			<article id="post-creer-des-applications-html5-pour-desktop-avec-nw-dot-js" class="container article article-type-post" itemscope itemprop="blogPost">
+
+	<header class="page-header">
+		
+    
+  
+    <h1 class="entry-title" itemprop="name">
+      Créer des applications HTML5 pour desktop avec NW.js
+    </h1>
+  
+
+
+		
+
+    
+      <p class="meta">
+        <span class="post-date">
+	<time datetime="2015-01-18T13:18:55.000Z" itemprop="datePublished">18 janvier 2015</time>
+</span>
+
+				
+           | <a href="http://www.jeremie-ledentu.com/blog/2015/01/18/creer-des-applications-html5-pour-desktop-avec-nw-dot-js/#disqus_thread">Commentaires</a>
+        
+      </p>
+    
+  </header>
+	
+	<div class="entry-content"><p>Vous êtes développeur web et vous aimeriez créer facilement une application native pour Windows, Linux ou MacOS X ? C’est possible ! Plusieurs projets ont vu le jour pour permettre de développer des applications desktop en utilisant des technologies web. <a href="http://nwjs.io/" target="_blank" rel="external">NW.js</a> (anciennement Node-Webkit) est l’un d’eux.</p>
+<p>NW.js a été créé au sein d’Intel par Roger Wang et publié sous licence MIT. C’est une application native basée sur Chromium et Node.js, qui permet de lire des pages web. C’est donc un outil permettant de développer des applications pour desktop en utilisant des technologies web : HTML5, CSS3, Javascript et WebGL, mais aussi Node.js.</p>
+<p>Vous pouvez trouver une liste d’applications développées avec NW.js <a href="https://github.com/nwjs/nw.js/wiki/List-of-apps-and-companies-using-node-webkit" target="_blank" rel="external">ici</a>. Voyons maintenant comment développer une telle application…</p>
+<a id="more"></a>
+<h2 id="Installation"><a href="#Installation" class="headerlink" title="Installation"></a>Installation</h2><p>NW.js est facile à installer. Téléchargez la dernière version correspondant à votre système <a href="https://github.com/nwjs/nw.js#downloads" target="_blank" rel="external">ici</a>, puis vous n’avez qu’à extraire l’archive où vous voulez.</p>
+<p>Le répertoire contient l’exécutable NW.js :</p>
+<ul>
+<li><code>nw</code> sous Linux</li>
+<li><code>nw.exe</code> sous Windows</li>
+<li><code>Contents/MasOS/node-webkit</code> sous OS X</li>
+</ul>
+<h2 id="Hello-World"><a href="#Hello-World" class="headerlink" title="Hello World!"></a>Hello World!</h2><p>Voyons maintenant comment créer une application NW.js toute simple. Créez un répertoire <code>nw-helloworld</code> et créez-y un fichier <code>index.html</code> :</p>
+<figure class="highlight html"><figcaption><span>index.html</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Hello World!<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h1</span>&gt;</span>Hello World!<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>Et créez maintenant un fichier manifest <code>package.json</code>, qui contient les paramètres de votre application NW.js :</p>
+<figure class="highlight json"><figcaption><span>package.json</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"name"</span>: <span class="string">"nw-helloworld"</span>,</span><br><span class="line">  <span class="attr">"main"</span>: <span class="string">"index.html"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Lancez votre application avec l’exécutable NW.js :</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nw ./nw-helloworld</span><br></pre></td></tr></table></figure>
+<p>Vous devriez voir ceci :</p>
+<img src="/images/nw-helloworld.png" class="center-block img-responsive">
+<hr>
+
+<p><strong><em>Note</em></strong> : sous certaines distributions linux, il est possible que vous rencontriez cette erreur : </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">error while loading shared libraries: libudev.so.0: cannot open shared object file: No such file or directory</span><br></pre></td></tr></table></figure>
+<p>Cette erreur est causée par l’absence de la bibliothèque <code>libudev0</code> utilisée par <code>nw</code>. Pas de panique, quelques solutions sont proposées <a href="https://github.com/nwjs/nw.js/wiki/The-solution-of-lacking-libudev.so.0" target="_blank" rel="external">ici</a>. Pour ma part, j’utilise la méthode la plus bourrine qui consiste à modifier l’exécutable :</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sed -i &apos;s/udev\.so\.0/udev.so.1/g&apos; nw</span><br></pre></td></tr></table></figure>
+<hr>
+
+<h2 id="Utiliser-Node-js"><a href="#Utiliser-Node-js" class="headerlink" title="Utiliser Node.js"></a>Utiliser Node.js</h2><p>Outre les API HTML5 que vous pouvez avoir l’habitude d’utiliser côté client, vous pouvez utiliser Node.js dans votre application comme vous le feriez côté serveur.</p>
+<p>Nous pouvons par exemple, accéder au système de fichiers de la machine, grâce à l’API Node.js <code>fs</code>.</p>
+<p>Créez un fichier <code>js/main.js</code> et incluez-le dans le body de votre <code>index.html</code> :</p>
+<figure class="highlight html"><figcaption><span>index.html</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Hello World!<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h1</span>&gt;</span>Hello World!<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"js/main.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>Dans ce fichier <code>main.js</code>, on utilise l’API <code>fs</code> pour lister les fichiers/répertoires présents dans le répertoire de l’application :</p>
+<figure class="highlight javascript"><figcaption><span>main.js</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> fs = <span class="built_in">require</span>(<span class="string">'fs'</span>);</span><br><span class="line"></span><br><span class="line">fs.readdir(<span class="string">'.'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">err, files</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (err) &#123;</span><br><span class="line">    <span class="comment">// Erreur</span></span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">var</span> ul = <span class="built_in">document</span>.createElement(<span class="string">'ul'</span>);</span><br><span class="line">  <span class="keyword">var</span> li;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>, len = files.length; i &lt; len; i++) &#123;</span><br><span class="line">    li = <span class="built_in">document</span>.createElement(<span class="string">'li'</span>);</span><br><span class="line">    li.innerHTML = files[i];</span><br><span class="line">    ul.appendChild(li);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="built_in">document</span>.documentElement.appendChild(ul);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>En rechargeant l’application, on obtient ceci :</p>
+<img src="/images/nw-helloworld2.png" class="center-block img-responsive">
+<h2 id="Parametres"><a href="#Parametres" class="headerlink" title="Paramètres"></a>Paramètres</h2><p>Il est possible de paramétrer l’application grâce au fichier manifest <code>package.json</code>, dont vous pouvez trouver le format <a href="https://github.com/nwjs/nw.js/wiki/manifest-format" target="_blank" rel="external">ici</a>.</p>
+<p>Par exemple, le paramètre <code>window.toolbar</code> permet de spécifier la présence de la barre d’outils.</p>
+<figure class="highlight json"><figcaption><span>package.json</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"main"</span>: <span class="string">"index.html"</span>,</span><br><span class="line">  <span class="attr">"name"</span>: <span class="string">"nw-helloworld"</span>,</span><br><span class="line">  <span class="attr">"window"</span>: &#123;</span><br><span class="line">    <span class="attr">"toolbar"</span>: <span class="literal">false</span>,</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Packager-son-application"><a href="#Packager-son-application" class="headerlink" title="Packager son application"></a>Packager son application</h2><p>Générer son application NW.js est très simple ! Deux façons de le faire :</p>
+<ul>
+<li>Recopier les fichiers NW.js dans le répertoire de votre application (où se trouve le fichier <code>package.json</code>)</li>
+<li>Ou bien, zipper le contenu du répertoire de votre application dans une archive <code>package.nw</code> à placer près du binaire <code>nw</code>.</li>
+</ul>
+<p>Dans les deux cas, il suffit de lancer l’exécutable <code>nw</code> pour démarrer l’appli.</p>
+<h2 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h2><p>Comme on l’a vu, NW.js présente pas mal d’avantages :</p>
+<ul>
+<li>Vous pouvez utiliser les technologies web (et Node.js !) ;</li>
+<li>Générer son application et très simple (pas de compilation, pas de dépendances à installer), la distribuer aussi (il n’y a qu’à fournir un répertoire et l’utilisateur peut lancer l’exécutable) ;</li>
+<li>NW.js supporte Linux, MacOS X, Windows.</li>
+</ul>
+<p>Parmi les points négatifs, on peut cependant noter :</p>
+<ul>
+<li>plusieurs versions de différence entre la dernière version de Chromium et celle supportée dans NW.js, donc attention si vous voulez utiliser des fonctionnalités HTML expérimentales ;</li>
+<li>le manque de contrôles (buttons, menus, etc.) natifs fait qu’il est difficile de développer une application intégrée au système.</li>
+</ul>
+</div>
+	
+
+  
+	<footer>
+		<p class="sharing">
+  
+	<a href="https://twitter.com/share" class="twitter-share-button" data-url="http://www.jeremie-ledentu.com/blog/2015/01/18/creer-des-applications-html5-pour-desktop-avec-nw-dot-js/" data-via="jledentu" data-text="Créer des applications HTML5 pour desktop avec NW.js" data-size="large">Tweeter</a>
+	
+  
+  <span class="g-plusone" data-size="large"></span>
+  
+</p>
+
+    
+<p class="meta">
+	
+	
+		<a class="basic-alignment pull-right" href="/blog/2015/02/20/coup-doeil-sur-ecmascript-6/">Coup d&#39;œil sur ECMAScript 6 &rarr;</a>
+	
+</p>
+
+
+	</footer>
+  
+
+	
+	<section id="comments">
+	  <div id="disqus_thread">
+	    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+	  </div>
+	</section>
+	
+</article>
+
+		</section>
+    <footer class="footer" role="contentinfo">
+	<div class="container">
+		<div id="social-buttons">
+		
+		<a href="https://twitter.com/jledentu" class="btn-twitter"><i class="fa fa-twitter"></i></a>
+		
+		
+		
+		<a href="https://github.com/jledentu" class="btn-github"><i class="fa fa-github"></i></a>
+		
+		
+		<a href="/atom.xml" class="btn-rss"><i class="fa fa-rss"></i></a>
+		</div>
+
+		<div class="info">
+			Copyright &copy; 2016 - Jérémie Ledentu -
+			<span class="credit">Propulsé par <a href="http://hexo.io/" target="_blank">Hexo</a></span>
+		</div>
+	</div>
+</footer>
+
+		
+<script>
+  var disqus_shortname = 'jledentu';
+  
+  var disqus_url = 'http://www.jeremie-ledentu.com/blog/2015/01/18/creer-des-applications-html5-pour-desktop-avec-nw-dot-js/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+
+
+<script type="text/javascript">
+  (function() {
+    var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+    script.src = 'https://apis.google.com/js/plusone.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+  })();
+</script>
+
+
+</body>
+</html>
