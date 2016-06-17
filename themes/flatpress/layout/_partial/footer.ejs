@@ -1,0 +1,24 @@
+<footer class="footer" role="contentinfo">
+	<div class="container">
+		<div id="social-buttons">
+		<% if (theme.twitter) { %>
+		<a href="https://twitter.com/<%= theme.twitter %>" class="btn-twitter"><i class="fa fa-twitter"></i></a>
+		<% } %>
+		<% if (theme.google_plus) { %>
+		<a href="https://plus.google.com/+<%= theme.google_plus %>" rel="author" class="btn-google-plus"><i class="fa fa-google-plus"></i></a>
+		<% } %>
+		<% if (theme.github) { %>
+		<a href="https://github.com/<%= theme.github %>" class="btn-github"><i class="fa fa-github"></i></a>
+		<% } %>
+		<% if (theme.facebook) { %>
+		<a href="https://facebook.com/<%= theme.facebook %>" class="btn-facebook"><i class="fa fa-facebook"></i></a>
+		<% } %>
+		<a href="/atom.xml" class="btn-rss"><i class="fa fa-rss"></i></a>
+		</div>
+
+		<div class="info">
+			Copyright &copy; <%= date(new Date(), 'YYYY') %> - <%= config.author || config.title %> -
+			<span class="credit"><%= __('powered_by') %> <a href="http://hexo.io/" target="_blank">Hexo</a></span>
+		</div>
+	</div>
+</footer>

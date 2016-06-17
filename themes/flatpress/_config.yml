@@ -1,0 +1,26 @@
+# Header
+menu:
+  Blog: /
+  Archives: /archives
+rss: /atom.xml
+
+# Content
+excerpt_link: Lire la suite →
+fancybox: true
+
+# Sidebar
+sidebar: false
+
+# display widgets at the bottom of index pages (pagination == 2)
+index_widgets:
+# - category
+# - tagcloud
+# - archive
+
+# widget behavior
+archive_type: 'monthly'
+show_count: false
+
+node_sass:
+  includePaths:
+    - node_modules

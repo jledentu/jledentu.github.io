@@ -1,0 +1,8 @@
+<p class="sharing">
+  <% if (config.twitter_tweet_button) { %>
+	<a href="https://twitter.com/share" class="twitter-share-button" data-url="<%- url_for(page.permalink) %>" data-via="<%- config.twitter %>" data-text="<%- page.title %>" data-size="large"><%- __('tweet') %></a>
+	<% } %>
+  <% if (config.google_plus_one) { %>
+  <span class="g-plusone" data-size="large"></span>
+  <% } %>
+</p>

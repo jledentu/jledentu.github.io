@@ -1,0 +1,45 @@
+$footer-border: solid 1px lightgray;
+$footer-bg: transparent;
+$footer-color: #777;
+
+.footer {
+	border-top: $footer-border;
+	background: $footer-bg;
+	padding-top: 40px;
+	padding-bottom: 40px;
+	margin-top: 100px;
+	color: $footer-color;
+	text-align: center;
+	font-size: 0.9em;
+
+	#social-buttons {
+		text-align:center;
+
+		a {
+			font-size: 25px;
+			margin-right: 10px;
+			color: $footer-color;
+
+			&:hover {
+				color: $link-hover-color;
+			}
+		}
+	}
+
+	.info {
+		line-height: 36px;
+	}
+}
+
+@media only screen and (min-width: 700px) {
+	.footer {
+
+		#social-buttons {
+			float: left;
+		}
+
+		.info {
+			float: right;
+		}
+	}
+}

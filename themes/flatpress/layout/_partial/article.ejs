@@ -1,0 +1,42 @@
+<article id="<%= post.layout %>-<%= post.slug %>" class="container article article-type-<%= post.layout %>" itemscope itemprop="blogPost">
+
+	<header class="page-header">
+		<% if (post.link || post.title){ %>
+    <%- partial('post/title', {class_name: 'entry-title'}) %>
+		<% } %>
+
+    <% if (!page.meta){ %>
+      <p class="meta">
+        <%- partial('post/date', {class_name: 'article-date', date_format: null}) %>
+				<% if (post.comments && config.disqus_shortname){ %>
+           | <a href="<%- post.permalink %>#disqus_thread"><%= __('comment') %></a>
+        <% } %>
+      </p>
+    <% } %>
+  </header>
+	<% if (post.excerpt && index){ %>
+  <div class="entry-content"><%- post.excerpt %></div>
+	<% if (theme.excerpt_link){ %>
+  <footer>
+    <a class="read-more btn btn-default pull-right" rel="full-article" href="<%- url_for(post.path) %>#more"><%= theme.excerpt_link %></a>
+  </footer>
+  <% } %>
+	<% } else { %>
+	<div class="entry-content"><%- post.content %></div>
+	<% } %>
+
+  <% if (!index){ %>
+	<footer>
+		<%- partial('post/sharing') %>
+    <%- partial('post/nav') %>
+	</footer>
+  <% } %>
+
+	<% if (!index && post.comments && config.disqus_shortname){ %>
+	<section id="comments">
+	  <div id="disqus_thread">
+	    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+	  </div>
+	</section>
+	<% } %>
+</article>

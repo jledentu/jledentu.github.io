@@ -1,0 +1,24 @@
+.navbar-default {
+	border-bottom: #bdc3c7 solid 5px;
+
+	a {
+		text-transform: uppercase;
+		transition: color 1s;
+		font-weight: bold;
+		font-size: 0.9em;
+	}
+}
+
+.title1 {
+	color: white;
+}
+
+.title2 {
+	color: #3498db;
+}
+
+a.navbar-brand {
+	font-family: 'jaapokkiregular', sans-serif;
+	font-size: 26px;
+	font-weight: normal;
+}

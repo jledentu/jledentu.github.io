@@ -1,0 +1,43 @@
+$post-date-color: gray;
+$post-title-color: black;
+
+img {
+	margin-bottom: 1.5em;
+}
+
+p.meta {
+	color: $post-date-color;
+	text-transform: uppercase;
+	font-size: 0.9em;
+}
+
+.entry-title > a {
+	color: $post-title-color;
+	transition: color 0.5s;
+}
+
+.entry-title > a:hover {
+	color: $link-hover-color;
+	text-decoration: none;
+	transition: color 0.5s;
+}
+
+.entry-content {
+	margin-bottom: 1.5em;
+}
+
+.pagination {
+	display: block;
+}
+
+code {
+	font-size: 1.0em;
+}
+
+.article footer {
+	overflow: auto;
+}
+
+.img-bordered {
+	border: 1px $thumbnail-border solid;
+}
